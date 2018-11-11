@@ -7,6 +7,30 @@ from bsonrpc.exceptions import FramingError
 from bsonrpc.framing import (
 	JSONFramingNetstring, JSONFramingNone, JSONFramingRFC7464)
 
+def convertNames(graph):
+
+    names = []
+    
+    for c in graph.children:
+        
+        names.append(c.name)
+        convertNames(c)
+
+    return names
+    
+    
+def convertVal(graph):
+
+    vals = []
+
+    for c in graph.children:
+        
+        vals.append(c.val)
+        convertVal(c)
+
+    return vals    
+
+
 leaf1 = node("leaf1")
 leaf2 = node("leaf2")
 
@@ -15,6 +39,8 @@ root = node("root", [leaf1, leaf1, leaf2])
 print("graph before increment")
 root.show()
 
+names = convertNames(root)
+vals = convertVal(root)
 
 # Cut-the-corners TCP Client:
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
