@@ -49,7 +49,7 @@ s.connect(('localhost', 50001))
 rpc = JSONRpc(s,framing_cls=JSONFramingNone)
 server = rpc.get_peer_proxy()
 # Execute in server:
-result = server.increment(names, vals) #asking server for the swapper method to be performed; waits for the server to give an input back
+result = server.increment(vals) #asking server for the swapper method to be performed; waits for the server to give an input back
 # result:              "!dlroW olleH"
 
 for c in vals:

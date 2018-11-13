@@ -14,7 +14,7 @@ from bsonrpc.framing import (
 class ServerServices(object):
 
   @request #this says that this is a request
-  def increment(names,vals):
+  def increment(vals,space):
       
     for c in vals:
         vals[c]+=1
