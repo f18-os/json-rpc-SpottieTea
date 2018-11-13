@@ -10,7 +10,6 @@ from bsonrpc.framing import (
 def convertVal(graph):
 
     vals = {}
-
     for c in graph.children:
         vals.update({c.name: c.val})
         convertVal(c)

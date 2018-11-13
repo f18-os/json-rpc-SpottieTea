@@ -14,10 +14,12 @@ from bsonrpc.framing import (
 class ServerServices(object):
 
   @request #this says that this is a request
-  def increment(vals,space):
+  def increment(leaf):
       
-    for c in vals:
-        vals[c]+=1
+    for c in leaf:
+        leaf[c]+=1
+        
+    return leaf
 
   @request
   def nop(self, txt):
